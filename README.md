@@ -15,5 +15,4 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### codewhy老师的新接口地址(baseUrl):http://152.136.185.210:8000/api/w6
