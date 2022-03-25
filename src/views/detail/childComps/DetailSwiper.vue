@@ -2,7 +2,7 @@
   <div>
     <swiper class="detail-swiper" v-if="images.length">
       <swiper-item class="item" v-for="(item, index) in images" :key="index">
-        <img :src="item" alt="">
+        <img v-lazy="item" alt="">
       </swiper-item>
     </swiper>
   </div>
