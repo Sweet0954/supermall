@@ -1,12 +1,12 @@
 <template>
-  <a class="goods-item" :href="goodsItem.link">
-    <img :src="goodsItem.show.img" alt="">
+  <div class="goods-item" @click="itemClick">
+    <img :src="showImage" @load="imageLoad">
     <div class="goods-info">
       <p>{{goodsItem.title}}</p>
       <span class="price">{{goodsItem.price}}</span>
       <span class="collect">{{goodsItem.cfav}}</span>
     </div>
-  </a>
+  </div>
 </template>
 
 <script>
@@ -18,6 +18,32 @@
         default() {
           return {}
         }
+      }
+    },
+    computed: {
+      showImage() {
+        return this.goodsItem.image || this.goodsItem.show.img
+      }
+    },
+    methods: {
+      imageLoad() {
+        // console.log("-----")
+        // this.$parent.$parent.$emit("itemImageLoad")
+        this.$bus.$emit("itemImageLoad")
+        /*if (this.$router.path.indexOf('/home')) {
+          this.$bus.$emit("homeItemImageLoad")
+        } else if (this.$router.path.indexOf('/detail')) {
+          this.$bus.$emit("detailItemImageLoad")
+        }*/
+      },
+      itemClick() {
+        this.$router.push('/detail/' + this.goodsItem.iid)
+        /*this.$router.push({
+          path: '/detail',
+          query: {
+            iid: this.goodsItem.iid
+          }
+        })*/
       }
     }
   }
